@@ -1,0 +1,16 @@
+.flash-box
+  .notice グループを作成しました
+.wrapper
+  = render "static_pages/side_bar"
+  .chat-main
+    .main-header
+      .left-header
+        .left-header__current-group
+          testgroup
+        .left-header__member-list
+          Member:
+      .right-header
+        .right-header__group-edit
+          Edit
+    = render "message"
+    = render "form"
