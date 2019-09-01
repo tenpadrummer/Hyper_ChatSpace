@@ -4,11 +4,15 @@
     .main-header
       .left-header
         .left-header__current-group
-          testgroup
+          = @group.name
         .left-header__member-list
           Member:
+          - @group.group_users.each do |member|
+            = member.user.name
       .right-header
         .right-header__group-edit
-          Edit
+          = link_to edit_group_path(@group) do
+            .right-header__group-edit__letter
+              Edit
     = render "message"
     = render "form"

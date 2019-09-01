@@ -24,13 +24,12 @@
     .group {
       padding: 20px 0 40px;
       &__group-name {
-        font-size: 16px;
-        display: block;
+        font-size: 15px;
         color: $white;
       }
-      &__group-message {
+      &__last-message {
         color: $white;
-        font-size: 16px;
+        font-size: 15px;
         margin-top: 5px;
       }
 	  }
@@ -43,4 +42,5 @@ li {
 }
 .icon {
   color: $white;
+  margin-left: 2px;
 }

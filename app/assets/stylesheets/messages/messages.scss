@@ -29,40 +29,40 @@
 			margin-top: 28px;
 			padding: 0 20px;
 			&__group-edit {
-				color: $sky_blue;
-				text-decoration: none;
+        color: $sky_blue;
+        text-decoration: none;
+        &__letter {
+          color: $sky_blue;
+          text-decoration: none;
+        }
 			}
 		}
 	}
   .messages{
     background-color: #fafafa;
-    padding: 46px 40px 0;
+    padding: 40px 40px 0;
     height: calc(100vh - 100px - 90px);
     overflow: scroll;
     .message {
       margin-bottom: 40px;
-      display: block;
       &__upper-info {
       display: flex;
+      margin-bottom: 5px;
         &__user {
           color: $letter-main;
-          font-size: 16px;
+          font-size: 15px;
           font-weight: bold;
         }
         &__date {
           color:$letter-date;
           font-size: 12px;
+          padding-top: 3px;
           padding-left: 10px;
         }
       }
       &__text {
-        margin-top: 10px;
-        display: block;
-        &__content {
-          color: $letter-main;
-          font-size: 14px;
-          margin-bottom: 10px;
-        }
+        color: $letter-main;
+        font-size: 15px;
         img {
           width: 200px;
         }
