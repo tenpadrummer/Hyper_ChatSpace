@@ -93,7 +93,10 @@
           right: 10px;
           cursor: pointer;
         }
-        #message_image {
+        .icon {
+          color: black;
+        }
+        .hidden {
           display: none;
         }
       }
