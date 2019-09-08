@@ -1,7 +1,7 @@
 $(function(){
   function buildHTML(message){
     var image = message.image ? `<img src="${message.image}">` : "";
-    var html = `<div class="message" data-message-id="${message.id}">
+    var html = `<div class="message" data-id=${message.id}>
                   <div class="message__upper-info">
                     <div class="message__upper-info__user">
                       ${message.user_name}
@@ -48,6 +48,7 @@ $(function(){
   var reloadMessages = function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
       var last_message_id =$(".message:last").data("id");
+      console.log(last_message_id);
       $.ajax({
         url: "api/messages",
         type: 'get',
@@ -57,9 +58,9 @@ $(function(){
       .done(function(messages) {
         var insertHTML = '';
         messages.forEach(function(message){
-          inserHTML = buildHTML(message);
+          insertHTML += buildHTML(message);
           $(".messages").append(insertHTML);
-        })
+        });
         $(".messages").animate({ scrollTop: $(".messages")[0].scrollHeight }, "first");
       })
       .fail(function() {
