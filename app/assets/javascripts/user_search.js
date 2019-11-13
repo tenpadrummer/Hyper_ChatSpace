@@ -26,11 +26,11 @@ $(function(){
   $(function(){
     $("#user-search-field").on("keyup", function(){
       var input = $("#user-search-field").val();
-
+      var group_id = $(".chat__group_id").val();
       $.ajax({
         url: "/users",
         type: "GET",
-        data: {keyword: input},
+        data: {keyword: input, groupId: group_id },
         dataType: "json",
       })
       .done(function(users){
