@@ -1,8 +1,9 @@
-@import "./reset";
-@import "./variable";
+@import "config/reset";
+@import "config/variable";
+@import "config/flash";
 @import 'font-awesome';
 @import "static_pages/side_bar";
 @import "messages/messages";
 @import "groups/group";
 @import "users/user";
-@import "flash";
+

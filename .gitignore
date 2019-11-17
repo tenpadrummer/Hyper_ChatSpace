@@ -22,7 +22,10 @@
 
 /public
 .byebug_history
-/public/uploads/*
+/public/*
+/assets/images/*
+.DS_store
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+

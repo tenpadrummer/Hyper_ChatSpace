@@ -42,7 +42,7 @@
     background-color: #fafafa;
     padding: 40px 40px 0;
     height: calc(100vh - 100px - 90px);
-    overflow: scroll;
+    overflow-y: scroll;
     .message {
       margin-bottom: 40px;
       &__upper-info {
