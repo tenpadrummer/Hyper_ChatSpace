@@ -20,6 +20,10 @@ $(function(){
     return html;
   }
 
+  function animate() {
+    $('.messages').animate({ scrollTop: $(".messages")[0].scrollHeight }, "first");
+  }
+
   $("#new_message").on("submit", function(e){
     e.preventDefault();
     var fd = new FormData(this);
@@ -37,7 +41,7 @@ $(function(){
       $('.messages').append(html);
       $('.input-box__text').val("");
       $('#new_message')[0].reset();
-      $('.messages').animate({ scrollTop: $(".messages")[0].scrollHeight }, "first");
+      animate();
     })
     .fail(function(){
       alert("メッセージを送信できませんでした");
@@ -62,7 +66,7 @@ $(function(){
           insertHTML += buildHTML(message);
           $(".messages").append(insertHTML);
         });
-        $(".messages").animate({ scrollTop: $(".messages")[0].scrollHeight }, "first");
+        animate();
       })
       .fail(function() {
         alert("error");

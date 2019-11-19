@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     namespace :api do
       resources :messages, only: [:index]
     end
+    collection do
+      put "show_last_message"
+    end
   end
 end
