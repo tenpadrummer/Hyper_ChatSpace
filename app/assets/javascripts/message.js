@@ -44,12 +44,15 @@ $(function(){
       contentType: false
     })
     .done(function(data) {
+      console.log(data);
       var html = buildHTML(data);
       var text = replaceHTML(data);
+      var id = `#${data.group_id}`;
       $('.messages').append(html);
       $('.input-box__text').val("");
       $('#new_message')[0].reset();
-      $(`#${data.group_id}`).text(text);
+      $(id).text(text);
+      $(id).append(`#${data.date}`);
       scroll();
     })
     .fail(function(){
