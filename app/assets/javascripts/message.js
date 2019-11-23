@@ -20,7 +20,14 @@ $(function(){
     return html;
   }
 
-  function animate() {
+  function replaceHTML(message){
+    var postedImage = message.image ? `"画像が投稿されています"` : "";
+    var html = `${message.content}
+                ${postedImage}`
+    return html;
+  }
+
+  function scroll() {
     $('.messages').animate({ scrollTop: $(".messages")[0].scrollHeight }, "first");
   }
 
@@ -38,10 +45,12 @@ $(function(){
     })
     .done(function(data) {
       var html = buildHTML(data);
+      var text = replaceHTML(data);
       $('.messages').append(html);
       $('.input-box__text').val("");
       $('#new_message')[0].reset();
-      animate();
+      $(`#${data.group_id}`).text(text);
+      scroll();
     })
     .fail(function(){
       alert("メッセージを送信できませんでした");
@@ -66,12 +75,12 @@ $(function(){
           insertHTML += buildHTML(message);
           $(".messages").append(insertHTML);
         });
-        animate();
+        scroll();
       })
       .fail(function() {
         alert("error");
       });
     }
   };
-  setInterval(reloadMessages, 10000);
+  setInterval(reloadMessages, 5000);
 });
