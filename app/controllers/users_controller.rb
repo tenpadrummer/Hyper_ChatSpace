@@ -1,15 +1,9 @@
 class UsersController < ApplicationController
 
   def index
-    if params[:groupId].present?
-      @group = Group.find(params[:groupId])
-      @user_ids = @group.users.ids
-      @users = User.where.not(id: @user_ids).where("(name LIKE(?)) and (id != ?)", "%#{params[:keyword]}%", "#{current_user.id}")
-    else
-      @users = User.where("(name LIKE(?)) and (id != ?)", "%#{params[:keyword]}%", "#{current_user.id}")
-    end
+    @users = User.where("(name LIKE(?)) and (id != ?)", "%#{params[:keyword]}%", "#{current_user.id}").where.not(id: params[:selected_user])
     respond_to do |format|
-      format.json{render json: @users}
+      format.json
     end
   end
 
@@ -29,5 +23,15 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email)
+  end
+
+  def selected_user
+    selected_user =[]
+    selected_user << current_user.id
+    if params[:array]
+      params[:array].map do |user_id|
+        selected_user << user_id
+      end
+    end
   end
 end

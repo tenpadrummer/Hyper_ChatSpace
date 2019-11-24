@@ -24,7 +24,7 @@
     .chat-group-form__field--right
       .chat-group-users
         .chat-group-user
-          %input{ name: "group[user_ids][]", type: "hidden", value: "#{current_user.id}"}
+          %input{ name: "group[user_ids][]", type: "hidden", value: "#{current_user.id}", class: "chat-group-user__selected_user"}
           .chat-group-user__name
             = current_user.name
         - group.users.each do |member|
@@ -32,7 +32,7 @@
             .chat-group-user
               - if member.id != current_user.id
                 .chat-group-user__name
-                  %input{ name: "group[user_ids][]", type: "hidden", value: "#{member.id}"}
+                  %input{ name: "group[user_ids][]", type: "hidden", value: "#{member.id}", class: "chat-group-user__selected_user"}
                   = member.name
                 .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
   .chat-group-form__field
