@@ -19,7 +19,6 @@ $(function(){
                 </div>`;
     return html;
   }
-
   function replaceHTML(message){
     var postedImage = message.image ? `"画像が投稿されています"` : "";
     var html = `${message.content}
