@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     if user.destroy
-      redirect_to new_user_registration_path
+      redirect_to new_user_registration_path, notice: '退会が完了しました'
     else
       render 'edit'
     end

@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[edit update]
+  before_action :set_group, only: %i[edit update destroy]
 
   def index; end
 
@@ -22,6 +22,14 @@ class GroupsController < ApplicationController
       redirect_to group_messages_path(@group), notice: 'グループを編集しました'
     else
       render 'edit'
+    end
+  end
+
+  def destroy
+    if @group.destroy
+      redirect_to root_path, notice: 'グループを削除しました'
+    else
+      render template: 'message/index'
     end
   end
 

@@ -21,23 +21,45 @@
       }
     }
 		.right-header {
-			border: 1px solid $sky_blue;
-			color: $sky_blue;
+          display: flex;
 			float: right;
 			height: 40px;
 			line-height: 40px;
 			margin-top: 28px;
-      padding: 0 20px;
+        padding: 0 20px;
       a {
         text-decoration: none;
       }
 			&__group-edit {
+        border: 1px solid $sky_blue;
+        padding:0 20px;
+        margin: 0 25px;
         color: $sky_blue;
         text-decoration: none;
-        &__letter {
-          color: $sky_blue;
-          text-decoration: none;
-        }
+          &__letter {
+            color: $sky_blue;
+            text-decoration: none;
+          }
+			}
+      &__group-delete {
+        border: 1px solid $alert_orange;
+        color: $alert_orange;
+        padding:0 20px;
+        text-decoration: none;
+          &__letter {
+            color: $alert_orange;
+            text-decoration: none;
+          }
+			}
+      &__group-exit {
+        border: 1px solid $sky_blue;
+        color: $sky_blue;
+        padding:0 20px;
+        text-decoration: none;
+          &__letter {
+            color: $sky_blue;
+            text-decoration: none;
+          }
 			}
 		}
 	}
