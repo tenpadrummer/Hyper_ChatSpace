@@ -19,6 +19,7 @@ $(function(){
                 </div>`;
     return html;
   }
+  
   function replaceHTML(message){
     var postedImage = message.image ? `"画像が投稿されています"` : "";
     var html = `${message.content}
@@ -50,11 +51,10 @@ $(function(){
       $('.input-box__text').val("");
       $('#new_message')[0].reset();
       $(id).text(text);
-      $(id).append(`#${data.date}`);
       scroll();
     })
     .fail(function(){
-      alert("メッセージを送信できませんでした");
+      return false
     })
     .always(function(){
       $('.new-message__submit-btn').prop('disabled', false);
@@ -79,7 +79,7 @@ $(function(){
         scroll();
       })
       .fail(function() {
-        alert("error");
+        return false
       });
     }
   };

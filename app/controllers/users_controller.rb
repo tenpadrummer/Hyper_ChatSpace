@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_to root_url
+      redirect_to root_url, notice: "ユーザー情報を編集しました"
     else
       render "edit"
     end
