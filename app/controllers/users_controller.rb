@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    if user.destroy_all
+    if user.destroy
       redirect_to new_user_registration_path
     else
       render 'edit'
