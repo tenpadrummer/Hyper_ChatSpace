@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-
   def index
-    @users = User.where("(name LIKE(?)) and (id != ?)", "%#{params[:keyword]}%", "#{current_user.id}").where.not(id: params[:selected_user])
+    @users = User.where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", current_user.id.to_s).where.not(id: params[:selected_user])
     respond_to do |format|
       format.json
     end
@@ -13,9 +12,18 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_to root_url, notice: "ユーザー情報を編集しました"
+      redirect_to root_url, notice: 'ユーザー情報を編集しました'
     else
-      render "edit"
+      render 'edit'
+    end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    if user.destroy_all
+      redirect_to new_user_registration_path
+    else
+      render 'edit'
     end
   end
 
@@ -26,12 +34,10 @@ class UsersController < ApplicationController
   end
 
   def selected_user
-    selected_user =[]
+    selected_user = []
     selected_user << current_user.id
-    if params[:array]
-      params[:array].map do |user_id|
-        selected_user << user_id
-      end
+    params[:array]&.map do |user_id|
+      selected_user << user_id
     end
   end
 end
