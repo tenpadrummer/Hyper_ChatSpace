@@ -1,7 +1,8 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[edit update destroy]
 
-  def index; end
+  def index
+  end
 
   def new
     @group = Group.new
