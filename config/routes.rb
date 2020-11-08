@@ -10,5 +10,8 @@ Rails.application.routes.draw do
     collection do
       put 'show_last_message'
     end
+    member do
+      get 'remove_user'
+    end
   end
 end

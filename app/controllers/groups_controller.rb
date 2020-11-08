@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[edit update destroy]
+  before_action :set_group, only: %i[edit update destroy remove_user]
 
   def index
   end
@@ -29,6 +29,15 @@ class GroupsController < ApplicationController
   def destroy
     if @group.destroy
       redirect_to root_path, notice: 'グループを削除しました'
+    else
+      render template: 'message/index'
+    end
+  end
+
+  def remove_user
+    group_users = @group.users
+    if group_users.destroy(current_user)
+      redirect_to root_path, notice: 'グループを退会しました'
     else
       render template: 'message/index'
     end
